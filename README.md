@@ -6,11 +6,11 @@ ROS nodes and Gazebo model for NVIDIA JetBot with Jetson Nano
 
 It is assumed that your Nano's SD card was flashed with NVIDIA's JetPack image - see the [Getting Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) guide.
 
-> **Note**:  the process below will likely exceed the disk capacity of a 16GB filesystem,  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; so a larger SD card should be used.  If using the 'Etcher' method with JetPack-L4T image,  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the APP partition will automatically be resized to fill the SD card upon first booting the system.  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise flash with L4T using the -S option (example given for 64GB SD card):  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `sudo ./flash.sh -S 58GiB jetson-nano-sd mmcblk0p1`  
+> **Note**:  the process below will likely exceed the disk capacity of a 16GB filesystem,
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; so a larger SD card should be used.  If using the 'Etcher' method with JetPack-L4T image,
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the APP partition will automatically be resized to fill the SD card upon first booting the system.
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise flash with L4T using the -S option (example given for 64GB SD card):
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `sudo ./flash.sh -S 58GiB jetson-nano-sd mmcblk0p1`
 
 
 ### Install ROS Melodic
@@ -76,7 +76,7 @@ $ sudo sh -c 'echo "source ~/workspace/catkin_ws/devel/setup.bash" >> ~/.bashrc'
 Close and open a new terminal window.
 Verify that your catkin_ws is visible to ROS:
 ```bash
-$ echo $ROS_PACKAGE_PATH 
+$ echo $ROS_PACKAGE_PATH
 /home/nvidia/workspace/catkin_ws/src:/opt/ros/melodic/share
 ```
 
@@ -132,7 +132,7 @@ Clone and build the [`jetbot_ros`](https://github.com/dusty-nv/jetbot_ros) repo:
 ```bash
 # clone the repo
 $ cd ~/workspace/catkin_ws/src
-$ git clone https://github.com/dusty-nv/jetbot_ros
+$ git clone --branch waveshare https://github.com/gnomons-ai-vision/jetbot_ros.git
 
 # build the package
 $ cd ../    # cd ~/workspace/catkin_ws
@@ -177,7 +177,7 @@ $ rostopic pub /jetbot_motors/cmd_str std_msgs/String --once "left"
 $ rostopic pub /jetbot_motors/cmd_str std_msgs/String --once "right"
 $ rostopic pub /jetbot_motors/cmd_str std_msgs/String --once "stop"
 ```
-(it is recommended to initially test with JetBot up on blocks, wheels not touching the ground)  
+(it is recommended to initially test with JetBot up on blocks, wheels not touching the ground)
 
 
 ### Using the Debug OLED
